@@ -1,0 +1,294 @@
+body {
+    background: #eaf6f8;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.merchandise-audit-logs {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.merch-audit-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.merch-roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.merch-audit-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.merch-audit-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.merch-filter-audit-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.merch-filter-audit-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.merch-filter-audit-select {
+    width: 200px;
+    padding: 12px 12px 12px 12px;
+    padding-right: 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.merch-date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.merch-date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.merch-date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.merch-date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.merch-audit-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+.merch-action-create {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.merch-action-update {
+    color: #004085;
+    background-color: #cce5ff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.merch-action-delete {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.merch-action-other {
+    color: #856404;
+    background-color: #fff3cd;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.merch-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.merch-loading-animation {
+    width: 200px;
+    height: 200px;
+}
+
+@media (max-width: 768px) {
+    .merchandise-audit-logs {
+        flex-direction: column;
+    }
+
+    .merch-roles {
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+
+    .merch-audit-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .merch-audit-header {
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .merch-audit-bottom-row {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .merch-audit-search-box {
+        flex-grow: 1;
+        max-width: 100%;
+        padding: 10px 15px;
+        font-size: 13px;
+        padding-right: 35px;
+        background-size: 14px;
+        background-position: right 12px center;
+    }
+
+    .merch-filter-audit-container,
+    .merch-date-filter-container {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+
+    .merch-filter-audit-container label,
+    .merch-date-filter-container label {
+        font-size: 14px;
+    }
+
+    .merch-filter-audit-select,
+    .merch-date-filter-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .merch-roles {
+        padding-right: 10px;
+        padding-top: 5px;
+    }
+
+    .merch-audit-content {
+        margin-top: 15px;
+    }
+
+    .merch-audit-header {
+        gap: 10px;
+    }
+
+    .merch-audit-bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .merch-audit-search-box {
+        padding: 8px 12px;
+        font-size: 12px;
+        padding-right: 30px;
+        background-size: 12px;
+        background-position: right 10px center;
+    }
+
+    .merch-filter-audit-container,
+    .merch-date-filter-container {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+
+    .merch-filter-audit-container label,
+    .merch-date-filter-container label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .merch-filter-audit-select,
+    .merch-date-filter-input {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        height: 36px;
+    }
+
+    .merch-action-create,
+    .merch-action-update,
+    .merch-action-delete,
+    .merch-action-other {
+        min-width: 60px;
+        padding: 3px 8px;
+        font-size: 12px;
+    }
+}

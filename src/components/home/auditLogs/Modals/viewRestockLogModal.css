@@ -1,0 +1,359 @@
+.restock-log-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: restockLogFadeIn 0.3s ease;
+}
+
+@keyframes restockLogFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.restock-log-modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: restockLogSlideIn 0.3s ease;
+}
+
+@keyframes restockLogSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.restock-log-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: white;
+}
+
+.restock-log-modal-header h2 {
+    margin: 0;
+    color: #4B929D;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.restock-log-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.restock-log-modal-close-btn:hover {
+    background-color: rgba(75, 146, 157, 0.1);
+    color: #4B929D;
+}
+
+.restock-log-modal-body {
+    padding: 30px;
+}
+
+.restock-log-modal-section {
+    margin-bottom: 30px;
+}
+
+.restock-log-modal-section:last-child {
+    margin-bottom: 0;
+}
+
+.restock-log-modal-section h3 {
+    color: #4B929D;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.restock-log-modal-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.restock-log-modal-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.restock-log-modal-detail-item.restock-log-modal-full-width {
+    grid-column: 1 / -1;
+}
+
+.restock-log-modal-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.restock-log-modal-value {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+a.restock-log-modal-value {
+    color: #4B929D;
+}
+
+.restock-log-modal-action-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+    color: #155724;
+    background-color: rgba(212, 237, 218, 0.8);
+}
+
+.restock-log-modal-changes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.restock-log-modal-change-item {
+    background-color: rgba(75, 146, 157, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.restock-log-modal-change-field {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4B929D;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.restock-log-modal-change-values {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.restock-log-modal-change-value-box {
+    background-color: white;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid rgba(75, 146, 157, 0.2);
+}
+
+.restock-log-modal-change-value-box.restock-log-modal-old-value {
+    border-left: 3px solid #f8d7da;
+}
+
+.restock-log-modal-change-value-box.restock-log-modal-new-value {
+    border-left: 3px solid #d4edda;
+}
+
+.restock-log-modal-change-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.restock-log-modal-change-text {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.restock-log-modal-change-arrow {
+    font-size: 24px;
+    color: #4B929D;
+    font-weight: bold;
+}
+
+.restock-log-modal-no-changes {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+.restock-log-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 30px;
+    border-top: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: rgba(75, 146, 157, 0.05);
+}
+
+.restock-log-modal-btn-export {
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.restock-log-modal-btn-export:hover {
+    background-color: #3a7580;
+}
+
+.restock-log-modal-export-icon {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 768px) {
+    .restock-log-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .restock-log-modal-header {
+        padding: 20px 20px;
+    }
+
+    .restock-log-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .restock-log-modal-body {
+        padding: 20px;
+    }
+
+    .restock-log-modal-details-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .restock-log-modal-change-values {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .restock-log-modal-change-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+
+    .restock-log-modal-section h3 {
+        font-size: 16px;
+    }
+
+    .restock-log-modal-footer {
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .restock-log-modal-content {
+        width: 98%;
+        max-height: 92vh;
+        border-radius: 8px;
+    }
+
+    .restock-log-modal-header {
+        padding: 16px;
+    }
+
+    .restock-log-modal-header h2 {
+        font-size: 18px;
+    }
+
+    .restock-log-modal-body {
+        padding: 16px;
+    }
+
+    .restock-log-modal-section {
+        margin-bottom: 20px;
+    }
+
+    .restock-log-modal-section h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .restock-log-modal-label {
+        font-size: 12px;
+    }
+
+    .restock-log-modal-value {
+        font-size: 14px;
+    }
+
+    .restock-log-modal-change-item {
+        padding: 12px;
+    }
+
+    .restock-log-modal-change-field {
+        font-size: 13px;
+    }
+
+    .restock-log-modal-change-value-box {
+        padding: 10px;
+    }
+
+    .restock-log-modal-change-text {
+        font-size: 13px;
+    }
+
+    .restock-log-modal-footer {
+        padding: 12px 16px;
+    }
+
+    .restock-log-modal-btn-export {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,132 @@
+.low-stock-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.low-stock-modal {
+  background-color: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 800px;
+  max-height: 80vh;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  padding: 20px;
+}
+
+.low-stock-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.low-stock-modal-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 24px;
+}
+
+.low-stock-close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.low-stock-close-btn:hover {
+  color: #333;
+}
+
+.low-stock-modal-content {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(80vh - 80px);
+}
+
+.low-stock-section-navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.low-stock-nav-btn {
+  background: #5fb3b3;
+  border: none;
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.low-stock-nav-btn:hover:not(:disabled) {
+    background: #4a9999;
+    transform: scale(1.05);
+}
+
+.low-stock-nav-btn:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+.low-stock-section-title {
+  font-weight: bold;
+  font-size: 18px;
+  color: #333;
+  min-width: 150px;
+  text-align: center;
+}
+
+.low-stock-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.low-stock-table th,
+.low-stock-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.low-stock-table th {
+  background-color: #f8f9fa;
+  font-weight: 600;
+  color: #333;
+}
+
+.low-stock-table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.low-stock-status-badge {
+  display: inline-block;
+  font-weight: 500;
+}

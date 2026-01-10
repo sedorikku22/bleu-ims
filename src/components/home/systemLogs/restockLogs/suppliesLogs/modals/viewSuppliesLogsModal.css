@@ -1,0 +1,76 @@
+.view-supplies-logs-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.view-supplies-logs-modal {
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.view-supplies-logs-close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+.view-supplies-logs-close-button:hover {
+    color: #000;
+}
+
+.view-supplies-logs-material-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4B929D;
+    margin-bottom: 8px;
+}
+
+.view-supplies-logs-divider {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-bottom: 16px;
+}
+
+.view-supplies-logs-restock-date-label,
+.view-supplies-logs-quantity-label,
+.view-supplies-logs-batch-date-label,
+.view-supplies-logs-status-label,
+.view-supplies-logs-logged-by-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.view-supplies-logs-restock-date,
+.view-supplies-logs-quantity,
+.view-supplies-logs-batch-date,
+.view-supplies-logs-status,
+.view-supplies-logs-logged-by {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+}

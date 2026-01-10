@@ -1,0 +1,374 @@
+body {
+    background: #eaf6f8;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.addon-audit-logs {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.addon-audit-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.addon-roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.addon-audit-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.addon-audit-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+.filter-addon-audit-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-addon-audit-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.filter-addon-audit-select {
+    width: 150px;
+    padding: 12px 12px 12px 12px;
+    padding-right: 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.addon-date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addon-date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.addon-date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.addon-date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.addon-audit-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+.addon-action-buttons button {
+    margin-right: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.addon-action-button.view {
+    background-color: #476930;
+}
+
+.addon-action-buttons button:hover {
+    opacity: 0.85;
+}
+
+.addon-action-create {
+    color: #155724;
+    background-color: #d4edda;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.addon-action-update {
+    color: #004085;
+    background-color: #cce5ff;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.addon-action-delete {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    min-width: 70px;
+}
+
+.addon-tooltip-container {
+    position: relative;
+    display: inline-block;
+}
+
+.addon-tooltip-text {
+    display: none;
+    width: max-content;
+    max-width: 160px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 6px 8px;
+    position: absolute;
+    z-index: 1000;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 1;
+    font-size: 13px;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.addon-tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+.addon-tooltip-container:hover .addon-tooltip-text {
+    display: block;
+}
+
+.addon-loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+}
+
+.addon-loading-animation {
+    width: 200px;
+    height: 200px;
+}
+
+
+/* tablet and smaller screens */
+@media (max-width: 768px) {
+    .addon-audit-logs {
+        flex-direction: column;
+    }
+
+    .addon-roles {
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+
+    .addon-audit-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .addon-audit-header {
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .addon-audit-bottom-row {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .addon-audit-search-box {
+        flex-grow: 1;
+        max-width: 100%;
+        padding: 10px 15px;
+        font-size: 13px;
+        padding-right: 35px;
+        background-size: 14px;
+        background-position: right 12px center;
+    }
+
+    .filter-addon-audit-container,
+    .addon-date-filter-container {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+
+    .filter-addon-audit-container label,
+    .addon-date-filter-container label {
+        font-size: 14px;
+    }
+
+    .filter-addon-audit-select,
+    .addon-date-filter-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .addon-action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .addon-action-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .addon-tooltip-text {
+        display: none !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .addon-roles {
+        padding-right: 10px;
+        padding-top: 5px;
+    }
+
+    .addon-audit-content {
+        margin-top: 15px;
+    }
+
+    .addon-audit-header {
+        gap: 10px;
+    }
+
+    .addon-audit-bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .addon-audit-search-box {
+        padding: 8px 12px;
+        font-size: 12px;
+        padding-right: 30px;
+        background-size: 12px;
+        background-position: right 10px center;
+    }
+
+    .filter-addon-audit-container,
+    .addon-date-filter-container {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+
+    .filter-addon-audit-container label,
+    .addon-date-filter-container label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .filter-addon-audit-select,
+    .addon-date-filter-input {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        height: 36px;
+    }
+
+    .addon-action-create,
+    .addon-action-update,
+    .addon-action-delete {
+        min-width: 60px;
+        padding: 3px 8px;
+        font-size: 12px;
+    }
+
+    .addon-action-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .addon-action-button {
+        width: auto;
+        padding: 6px 8px;
+        height: 32px;
+        font-size: 12px;
+    }
+}

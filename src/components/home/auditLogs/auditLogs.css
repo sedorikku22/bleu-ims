@@ -1,0 +1,263 @@
+.auditLogs {
+  display: flex;
+}
+
+.audit-roles {
+  flex: 1;
+  padding-right: 60px;
+  padding-top: 20px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.audit-roles > :first-child {
+  margin-left: 100px;
+}
+
+.audit-intro {
+  margin-left: 100px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.audit-subtitle {
+  font-size: 15px;
+  color: #6B7280;
+  margin: 0;
+}
+
+.auditLogs-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0;
+  margin-left: 100px;
+}
+
+.audit-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  padding: 0;
+  align-items: start;
+  max-width: 1200px;
+}
+
+.audit-column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.audit-card {
+  background-color: #4B929D;
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-height: auto;
+  position: relative;
+}
+
+.audit-card.expanded {
+  z-index: 10;
+}
+
+.audit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  background-color: #5AA3AF;
+}
+
+.audit-header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.audit-card-header {
+  margin-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.audit-card-title-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.audit-card-icon {
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.audit-card-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.audit-card-description {
+  margin: 12px 0 0 0;
+  font-size: 14px;
+  opacity: 0.85;
+  line-height: 1.5;
+}
+
+.audit-page-title {
+font-size: 28px;
+font-weight: 600;
+color: #4B929D;
+margin-left: 60px;
+}
+
+.expand-icon {
+  font-size: 14px;
+  transition: transform 0.3s ease;
+  display: inline-block;
+  opacity: 0.8;
+}
+
+.expand-icon.expanded {
+  transform: rotate(180deg);
+}
+
+.audit-sub-section {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.audit-main-button {
+  background-color: rgba(255,255,255,0.9);
+  color: #4B929D;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.audit-main-button:hover {
+  background-color: white;
+  transform: scale(1.02);
+}
+
+.audit-sub-button {
+  background-color: rgba(255,255,255,0.15);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.audit-sub-button:hover {
+  background-color: rgba(255,255,255,0.25);
+  border-color: rgba(255,255,255,0.5);
+  transform: scale(1.02);
+}
+
+.sub-icon {
+  font-size: 14px;
+  font-weight: bold;
+  transition: transform 0.2s ease;
+}
+
+.audit-sub-button:hover .sub-icon {
+  transform: translateX(3px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auditLogs {
+        flex-direction: column;
+    }
+    
+    .audit-roles {
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+    
+    .audit-roles > :first-child {
+        margin-left: 0;
+    }
+
+    .audit-intro {
+        margin-left: 0;
+    }
+    
+    .auditLogs-content {
+        margin-left: 0;
+        margin-top: 20px;
+        margin-right: 10px;
+    }
+    
+    .audit-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .audit-roles {
+        padding-right: 10px;
+        padding-top: 5px;
+    }
+    
+    .auditLogs-content {
+        margin-right: 10px;
+        margin-top: 15px;
+    }
+    
+    .audit-card {
+        padding: 15px;
+    }
+    
+    .audit-card-header h3 {
+        font-size: 18px;
+    }
+    
+    .audit-sub-button {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+}

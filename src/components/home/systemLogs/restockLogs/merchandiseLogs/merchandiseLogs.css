@@ -1,0 +1,274 @@
+.merchandise-logs {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+    margin-left: 48px;
+}
+
+.merchandise-logs-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.merchandise-logs-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.merchandise-logs-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.merchandise-logs-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+/* Filter container */
+.filter-merchandise-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-merchandise-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.filter-merchandise-select {
+    width: 150px;
+    padding: 12px 12px 12px 12px;
+    padding-right: 24px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="16" viewBox="0 0 24 24" width="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    background-size: 16px;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+/* Date filter containers */
+.date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .merchandise-logs-content {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .merchandise-logs-header {
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 15px;
+  }
+
+  .merchandise-logs-bottom-row {
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .merchandise-logs-search-box {
+    max-width: 100%;
+    padding: 10px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .filter-merchandise-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .filter-merchandise-container label {
+    font-size: 14px;
+  }
+
+  .filter-merchandise-select {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .date-filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .date-filter-container label {
+    font-size: 14px;
+  }
+
+  .date-filter-input {
+    width: 100%;
+    font-size: 16px;
+  }
+
+  .add-merchandise-logs-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .merchandise-logs-content {
+    margin-left: 20px;
+  }
+
+  .merchandise-logs-header {
+    margin-left: 20px;
+  }
+
+  .merchandise-logs-bottom-row {
+    gap: 12px;
+  }
+
+  .merchandise-logs-search-box {
+    max-width: 600px;
+  }
+
+  .filter-merchandise-select {
+    width: 120px;
+  }
+
+  .date-filter-input {
+    width: 120px;
+  }
+}
+
+.date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.add-merchandise-logs-button {
+    box-sizing: border-box;
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 0 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.add-merchandise-logs-button:hover {
+    background-color: #37717a;
+}
+
+/* Status badges */
+.status-available {
+  color: #155724; 
+  background-color: #d4edda; 
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-used {
+  color: #856404; 
+  background-color: #fff3cd; 
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-low-stock {
+  color: #856404; 
+  background-color: #fff3cd; 
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-not-available {
+  color: #721c24; 
+  background-color: #f8d7da; 
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}

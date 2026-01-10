@@ -1,0 +1,371 @@
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: white;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #4B929D;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background-color: rgba(75, 146, 157, 0.1);
+    color: #4B929D;
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.log-section {
+    margin-bottom: 30px;
+}
+
+.log-section:last-child {
+    margin-bottom: 0;
+}
+
+.log-section h3 {
+    color: #4B929D;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.log-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.log-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.log-detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.log-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.log-value {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+a.log-value {
+    color: #4B929D;
+}
+
+.action-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+}
+
+.action-badge.create {
+    color: #155724;
+    background-color: rgba(212, 237, 218, 0.6);
+}
+
+.action-badge.update {
+    color: #004085;
+    background-color: rgba(204, 229, 255, 0.6);
+}
+
+.action-badge.delete {
+    color: #721c24;
+    background-color: rgba(248, 215, 218, 0.6);
+}.changes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.change-item {
+    background-color: rgba(75, 146, 157, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.change-field {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4B929D;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.change-values {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.change-value-box {
+    background-color: white;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid rgba(75, 146, 157, 0.2);
+}
+
+.change-value-box.old-value {
+    border-left: 3px solid #f8d7da;
+}
+
+.change-value-box.new-value {
+    border-left: 3px solid #d4edda;
+}
+
+.change-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.change-text {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.change-arrow {
+    font-size: 24px;
+    color: #4B929D;
+    font-weight: bold;
+}
+
+.no-changes {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 30px;
+    border-top: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: rgba(75, 146, 157, 0.05);
+}
+
+.modal-btn-export {
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.modal-btn-export:hover {
+    background-color: #3a7580;
+}
+
+.export-icon {
+    width: 18px;
+    height: 18px;
+}
+
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .modal-header {
+        padding: 20px 20px;
+    }
+
+    .modal-header h2 {
+        font-size: 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .log-details-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .change-values {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .change-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+
+    .log-section h3 {
+        font-size: 16px;
+    }
+
+    .modal-footer {
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-content {
+        width: 98%;
+        max-height: 92vh;
+        border-radius: 8px;
+    }
+
+    .modal-header {
+        padding: 16px;
+    }
+
+    .modal-header h2 {
+        font-size: 18px;
+    }
+
+    .modal-body {
+        padding: 16px;
+    }
+
+    .log-section {
+        margin-bottom: 20px;
+    }
+
+    .log-section h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .log-label {
+        font-size: 12px;
+    }
+
+    .log-value {
+        font-size: 14px;
+    }
+
+    .change-item {
+        padding: 12px;
+    }
+
+    .change-field {
+        font-size: 13px;
+    }
+
+    .change-value-box {
+        padding: 10px;
+    }
+
+    .change-text {
+        font-size: 13px;
+    }
+
+    .modal-footer {
+        padding: 12px 16px;
+    }
+
+    .modal-btn-export {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,279 @@
+body {
+    background: #eaf6f8;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.waste {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.waste-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.waste-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.waste-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+/* Date filter container */
+.date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.add-waste-button {
+    box-sizing: border-box;
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 0 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.add-waste-button:hover {
+    background-color: #37717a;
+}
+
+.waste-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+.waste-table-container {
+    margin: 20px;
+    overflow-x: auto;
+}
+
+.waste-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.waste-table th,
+.waste-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.waste-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+.action-buttons button {
+    margin-right: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+/* Responsive Design */
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    .waste {
+        flex-direction: column;
+    }
+
+    .roles {
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+
+    .waste-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .waste-header {
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .waste-bottom-row {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .waste-search-box {
+        flex-grow: 1;
+        max-width: 100%;
+        padding: 10px 15px;
+        font-size: 13px;
+        padding-right: 35px;
+        background-size: 14px;
+        background-position: right 12px center;
+    }
+
+    .date-filter-container {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+
+    .date-filter-container label {
+        font-size: 14px;
+    }
+
+    .date-filter-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .add-waste-button {
+        flex: 1 1 100%;
+        padding: 0 15px;
+        font-size: 14px;
+        height: 40px;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    .roles {
+        padding-right: 10px;
+        padding-top: 5px;
+    }
+
+    .waste-content {
+        margin-top: 15px;
+    }
+
+    .waste-header {
+        gap: 10px;
+    }
+
+    .waste-bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .waste-search-box {
+        padding: 8px 12px;
+        font-size: 12px;
+        padding-right: 30px;
+        background-size: 12px;
+        background-position: right 10px center;
+    }
+
+    .date-filter-container {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+
+    .date-filter-container label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .date-filter-input {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        height: 36px;
+    }
+
+    .add-waste-button {
+        padding: 0 12px;
+        font-size: 13px;
+        height: 36px;
+        margin-top: 5px;
+    }
+}
+
+
+

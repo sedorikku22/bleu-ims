@@ -1,0 +1,103 @@
+.view-ingredient-logs-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.view-ingredient-logs-modal {
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    width: 400px;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.view-ingredient-logs-close-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #555;
+}
+
+.view-ingredient-logs-close-button:hover {
+    color: #000;
+}
+
+.view-ingredient-logs-product-name {
+    font-size: 24px;
+    font-weight: 700;
+    color: #4B929D;
+    margin-bottom: 8px;
+}
+
+.view-ingredient-logs-divider {
+    border: none;
+    border-top: 2px solid #ccc;
+    margin-bottom: 16px;
+}
+
+.view-ingredient-logs-restock-date-label,
+.view-ingredient-logs-amount-label,
+.view-ingredient-logs-batch-date-label,
+.view-ingredient-logs-expiration-label,
+.view-ingredient-logs-status-label,
+.view-ingredient-logs-logged-by-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #888;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.view-ingredient-logs-restock-date,
+.view-ingredient-logs-amount,
+.view-ingredient-logs-batch-date,
+.view-ingredient-logs-expiration,
+.view-ingredient-logs-status,
+.view-ingredient-logs-logged-by,
+.view-ingredient-logs-notes {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 16px;
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.status-available {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.status-used {
+    background-color: #e2e3e5;
+    color: #383d41;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.status-expired {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}

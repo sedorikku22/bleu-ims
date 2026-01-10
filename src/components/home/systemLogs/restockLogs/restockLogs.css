@@ -1,0 +1,70 @@
+.restockLogs {
+  display: flex;
+}
+
+.restockLogs-header {
+  margin-bottom: 0;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: none;
+  margin: 20px;
+  margin-top: 0;
+  margin-left: 48px;
+}
+
+.restockLogs-top-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.restockLogs-tab-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.restockLogs-tab-button.active {
+  background-color: #3a7179;
+  color: white;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .restockLogs-header {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .restockLogs-top-row {
+    gap: 5px;
+    justify-content: center;
+  }
+
+  .restockLogs-tab-button {
+    padding: 8px 16px;
+    font-size: 14px;
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .restockLogs-header {
+    margin-left: 20px;
+  }
+
+  .restockLogs-top-row {
+    gap: 8px;
+  }
+
+  .restockLogs-tab-button {
+    padding: 9px 18px;
+  }
+}

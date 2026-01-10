@@ -1,0 +1,393 @@
+.addon-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: addonFadeIn 0.3s ease;
+}
+
+@keyframes addonFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.addon-modal-content {
+    background-color: white;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: addonSlideIn 0.3s ease;
+}
+
+@keyframes addonSlideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.addon-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 24px 30px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: white;
+}
+
+.addon-modal-header h2 {
+    margin: 0;
+    color: #4B929D;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.addon-modal-close-btn {
+    background: none;
+    border: none;
+    font-size: 32px;
+    color: #666;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.addon-modal-close-btn:hover {
+    background-color: rgba(75, 146, 157, 0.1);
+    color: #4B929D;
+}
+
+.addon-modal-body {
+    padding: 30px;
+}
+
+.addon-log-section {
+    margin-bottom: 30px;
+}
+
+.addon-log-section:last-child {
+    margin-bottom: 0;
+}
+
+.addon-log-section h3 {
+    color: #4B929D;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 16px 0;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.addon-log-details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+}
+
+.addon-log-detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.addon-log-detail-item.full-width {
+    grid-column: 1 / -1;
+}
+
+.addon-log-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.addon-log-value {
+    font-size: 15px;
+    color: #333;
+    font-weight: 500;
+}
+
+a.addon-log-value {
+    color: #4B929D;
+}
+
+.addon-action-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 13px;
+    text-align: center;
+}
+
+.addon-action-badge.create {
+    color: #155724;
+    background-color: rgba(212, 237, 218, 0.6);
+}
+
+.addon-action-badge.update {
+    color: #004085;
+    background-color: rgba(204, 229, 255, 0.6);
+}
+
+.addon-action-badge.delete {
+    color: #721c24;
+    background-color: rgba(248, 215, 218, 0.6);
+}
+
+
+.addon-changes-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.addon-change-item {
+    background-color: rgba(75, 146, 157, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+    border: 1px solid rgba(75, 146, 157, 0.15);
+}
+
+.addon-change-field {
+    font-size: 14px;
+    font-weight: 600;
+    color: #4B929D;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.addon-change-values {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.addon-change-value-box {
+    background-color: white;
+    border-radius: 6px;
+    padding: 12px;
+    border: 1px solid rgba(75, 146, 157, 0.2);
+}
+
+.addon-change-value-box.addon-old-value {
+    border-left: 3px solid #f8d7da;
+}
+
+.addon-change-value-box.addon-new-value {
+    border-left: 3px solid #d4edda;
+}
+
+.addon-change-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.addon-change-text {
+    display: block;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    word-wrap: break-word;
+}
+
+.addon-change-arrow {
+    font-size: 24px;
+    color: #4B929D;
+    font-weight: bold;
+}
+
+.addon-no-changes {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+    padding: 20px;
+}
+
+.addon-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    padding: 20px 30px;
+    border-top: 1px solid rgba(75, 146, 157, 0.2);
+    background-color: rgba(75, 146, 157, 0.05);
+}
+
+.addon-verification-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1px solid #c3e6cb;
+    margin-top: 20px;
+}
+
+.addon-verification-icon {
+    width: 16px;
+    height: 16px;
+    color: #155724;
+}
+
+.addon-modal-btn-export {
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.addon-modal-btn-export:hover {
+    background-color: #3a7580;
+}
+
+.addon-export-icon {
+    width: 18px;
+    height: 18px;
+}
+
+@media (max-width: 768px) {
+    .addon-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .addon-modal-header {
+        padding: 20px 20px;
+    }
+
+    .addon-modal-header h2 {
+        font-size: 20px;
+    }
+
+    .addon-modal-body {
+        padding: 20px;
+    }
+
+    .addon-log-details-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .addon-change-values {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .addon-change-arrow {
+        transform: rotate(90deg);
+        text-align: center;
+    }
+
+    .addon-log-section h3 {
+        font-size: 16px;
+    }
+
+    .addon-modal-footer {
+        padding: 16px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .addon-modal-content {
+        width: 98%;
+        max-height: 92vh;
+        border-radius: 8px;
+    }
+
+    .addon-modal-header {
+        padding: 16px;
+    }
+
+    .addon-modal-header h2 {
+        font-size: 18px;
+    }
+
+    .addon-modal-body {
+        padding: 16px;
+    }
+
+    .addon-log-section {
+        margin-bottom: 20px;
+    }
+
+    .addon-log-section h3 {
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+
+    .addon-log-label {
+        font-size: 12px;
+    }
+
+    .addon-log-value {
+        font-size: 14px;
+    }
+
+    .addon-change-item {
+        padding: 12px;
+    }
+
+    .addon-change-field {
+        font-size: 13px;
+    }
+
+    .addon-change-value-box {
+        padding: 10px;
+    }
+
+    .addon-change-text {
+        font-size: 13px;
+    }
+
+    .addon-modal-footer {
+        padding: 12px 16px;
+    }
+
+    .addon-modal-btn-export {
+        padding: 8px 20px;
+        font-size: 14px;
+    }
+}

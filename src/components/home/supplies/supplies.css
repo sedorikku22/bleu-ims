@@ -1,0 +1,486 @@
+body {
+    background: #eaf6f8;
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.supplies {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.supply-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.supply-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.supply-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: nowrap;
+}
+
+
+
+.date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+.date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.filter-and-add-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.filter-dropdown {
+    position: relative;
+}
+
+.filter-button {
+    box-sizing: border-box;
+    background-color: #ffffff;
+    color: #1f1e1e;
+    border: 1px solid #ccc;
+    padding: 0 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.filter-button:hover {
+    background-color: #ccc;
+}
+
+.filter-dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: 120px;
+}
+
+.filter-dropdown-menu button {
+    width: 100%;
+    padding: 10px 15px;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+}
+
+.filter-dropdown-menu button:hover {
+    background-color: #f0f0f0;
+}
+
+.add-supply-button {
+    box-sizing: border-box;
+    background-color: #4B929D;
+    color: white;
+    border: none;
+    padding: 0 18px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.add-supply-button:hover {
+    background-color: #37717a;
+}
+
+.supply-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+.supply-table-container {
+    margin: 20px;
+    overflow-x: auto;
+}
+
+.supply-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.supply-table th,
+.supply-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.supply-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+.action-buttons button {
+    margin-right: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.action-button.view {
+    background-color: #476930;
+}
+
+.action-button.edit {
+    background-color: #007bff;
+}
+
+.action-button.delete {
+    background-color: #dc3545;
+}
+
+.action-button.restock {
+    background-color: #FDB137;
+}
+
+.action-buttons button:hover {
+    opacity: 0.85;
+}
+
+.status-available {
+  color: #155724;
+  background-color: #d4edda;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-low-stock {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-not-available {
+  color: #721c24;
+  background-color: #f8d7da;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-text {
+  display: none;
+  width: max-content;
+  max-width: 160px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 8px;
+  position: absolute;
+  z-index: 1000;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+  font-size: 13px;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333 transparent transparent transparent;
+}
+
+.tooltip-container:hover .tooltip-text {
+  display: block;
+}
+
+/* Responsive Design */
+
+/* Tablet and smaller screens */
+@media (max-width: 768px) {
+    .supplies {
+        flex-direction: column;
+    }
+
+    .roles {
+        margin-left: 0;
+        padding-right: 20px;
+        padding-top: 10px;
+    }
+
+    .supply-content {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .supply-header {
+        margin-left: 0;
+        gap: 15px;
+    }
+
+    .supply-bottom-row {
+        flex-wrap: wrap;
+        gap: 10px;
+        padding-bottom: 15px;
+    }
+
+    .supply-search-box {
+        flex-grow: 1;
+        max-width: 100%;
+        padding: 10px 15px;
+        font-size: 13px;
+        padding-right: 35px;
+        background-size: 14px;
+        background-position: right 12px center;
+    }
+
+
+    .date-filter-container {
+        flex: 1 1 45%;
+        min-width: 200px;
+    }
+
+    .date-filter-container label {
+        font-size: 14px;
+    }
+
+    .date-filter-input {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        height: 40px;
+    }
+
+    .filter-and-add-container {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        width: 100%;
+    }
+
+    .filter-dropdown {
+        width: 100%;
+    }
+
+    .filter-button {
+        width: 100%;
+        padding: 6px 10px;
+        font-size: 11px;
+        height: 28px;
+    }
+
+    .add-supply-button {
+        flex: 1 1 100%;
+        padding: 0 15px;
+        font-size: 14px;
+        height: 40px;
+        margin-top: 10px;
+    }
+
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .action-button {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .tooltip-text {
+        display: none !important; /* Hide tooltips on small screens to avoid clutter */
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    .roles {
+        padding-right: 10px;
+        padding-top: 5px;
+    }
+
+    .supply-content {
+        margin-top: 15px;
+    }
+
+    .supply-header {
+        gap: 10px;
+    }
+
+    .supply-bottom-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+
+    .supply-search-box {
+        padding: 8px 12px;
+        font-size: 12px;
+        padding-right: 30px;
+        background-size: 12px;
+        background-position: right 10px center;
+    }
+
+
+    .date-filter-container {
+        flex: 1 1 100%;
+        min-width: unset;
+    }
+
+    .date-filter-container label {
+        font-size: 13px;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    .date-filter-input {
+        width: 100%;
+        padding: 8px;
+        font-size: 13px;
+        height: 36px;
+    }
+
+    .add-supply-button {
+        padding: 0 12px;
+        font-size: 13px;
+        height: 36px;
+        margin-top: 5px;
+    }
+
+    .status-available,
+    .status-low-stock,
+    .status-not-available {
+        min-width: 70px;
+        padding: 3px 8px;
+        font-size: 12px;
+    }
+
+    .action-buttons {
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+    }
+
+    .action-button {
+        width: auto;
+        padding: 6px 8px;
+        height: 32px;
+        font-size: 12px;
+    }
+}

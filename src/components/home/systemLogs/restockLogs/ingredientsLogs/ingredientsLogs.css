@@ -1,0 +1,183 @@
+.ingredients-logs {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+
+.ingredients-logs-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+    margin-top: 0;
+    margin-left: 48px;
+}
+
+.roles {
+    flex: 1;
+    padding-right: 60px;
+    padding-top: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+.ingredients-logs-header {
+    margin-top: 0;
+    margin-left: 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #eaf6f8;
+}
+
+.ingredients-logs-bottom-row {
+    display: flex;
+    gap: 15px;
+    padding-bottom: 20px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ingredients-logs-search-box {
+    flex-grow: 1;
+    max-width: 1000px;
+    padding: 12px 18px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.15);
+    outline: none;
+    background-color: white;
+    background-image: url('https://cdn-icons-png.flaticon.com/512/622/622669.png');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+    color: #333;
+}
+
+.date-filter-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.date-filter-container label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+}
+
+.date-filter-input {
+    width: 150px;
+    padding: 12px 12px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    height: 44px;
+    box-sizing: border-box;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .ingredients-logs-content {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .ingredients-logs-header {
+    margin-left: 10px;
+    margin-right: 10px;
+    gap: 15px;
+  }
+
+  .ingredients-logs-bottom-row {
+    gap: 10px;
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .ingredients-logs-search-box {
+    max-width: 100%;
+    padding: 10px 16px;
+    font-size: 16px; /* Prevent zoom on iOS */
+  }
+
+  .date-filter-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .date-filter-container label {
+    font-size: 14px;
+  }
+
+  .date-filter-input {
+    width: 100%;
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .ingredients-logs-content {
+    margin-left: 20px;
+  }
+
+  .ingredients-logs-header {
+    margin-left: 20px;
+  }
+
+  .ingredients-logs-bottom-row {
+    gap: 12px;
+  }
+
+  .ingredients-logs-search-box {
+    max-width: 600px;
+  }
+
+  .date-filter-input {
+    width: 120px;
+  }
+}
+
+.date-filter-input::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(0.5);
+}
+
+.status-available {
+  color: #155724;
+  background-color: #d4edda;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-used {
+  color: #856404;
+  background-color: #fff3cd;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
+
+.status-expired {
+  color: #1f1e1e;
+  background-color: #e9e7e7;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  display: inline-block;
+  text-align: center;
+  min-width: 90px;
+}
