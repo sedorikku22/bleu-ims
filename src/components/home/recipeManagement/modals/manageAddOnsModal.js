@@ -7,7 +7,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import AddOnsModal from './addOnsModal'; 
 import EditAddOnModal from './editAddOnModal'; 
 
-const API_BASE_URL = "http://127.0.0.1:8004";
+const API_BASE_URL = "https://ims-recipeservices.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 const ManageAddOnsModal = ({ onClose }) => {

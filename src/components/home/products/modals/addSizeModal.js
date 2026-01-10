@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import "./addSizeModal.css"; 
 
-const API_BASE_URL = "http://127.0.0.1:8001"; 
+const API_BASE_URL = "https://ims-productservices.onrender.com"; 
 const getAuthToken = () => localStorage.getItem("authToken");
 
 function AddSizeModal({ product, onClose, onSizeAdded }) {

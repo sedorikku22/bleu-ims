@@ -53,7 +53,7 @@ function AddMerchandiseModal({ onClose, onSubmit}) {
             formData.append("MerchandiseImageFile", imageFile);
 
             try {
-                const response = await fetch("http://127.0.0.1:8002/merchandise/", {
+                const response = await fetch("https://bleu-stockservices.onrender.com/merchandise/", {
                     method: "POST",
                     headers: { Authorization: `Bearer ${token}` },
                     body: formData

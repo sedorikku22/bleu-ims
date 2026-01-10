@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import './addOnsModal.css';
 import { toast } from 'react-toastify';
 import SearchableSelect from "./searchableSelect"; 
-const API_BASE_URL = "http://127.0.0.1:8004";
-const INGREDIENTS_API_URL = "http://127.0.0.1:8002/ingredients/";
+const API_BASE_URL = "https://ims-recipeservices.onrender.com";
+const INGREDIENTS_API_URL = "https://bleu-stockservices.onrender.com/ingredients/";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 // unit helper

@@ -19,7 +19,7 @@ function formatDateTime(dateString) {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-const API_BASE_URL = "http://127.0.0.1:8003";
+const API_BASE_URL = "https://ims-restockservices.onrender.comv";
 
 function IngredientsLogsContent() {
     const [ingredientRecords, setIngredientRecords] = useState([]);

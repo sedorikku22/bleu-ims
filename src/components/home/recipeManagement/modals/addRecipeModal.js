@@ -5,7 +5,7 @@ import SearchableSelect from "./searchableSelect";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_BASE_URL = "http://127.0.0.1:8004";
+const API_BASE_URL = "https://ims-recipeservices.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 function AddRecipeModal({ onClose, onSubmit, type, products, initialIngredients, supplies: availableSupplies }) {
@@ -55,7 +55,7 @@ function AddRecipeModal({ onClose, onSubmit, type, products, initialIngredients,
             const token = getAuthToken();
             if (!token) return;
             try {
-                const res = await fetch("http://127.0.0.1:8002/ingredients/", {
+                const res = await fetch("https://bleu-stockservices.onrender.com/ingredients/", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = await res.json();
@@ -74,7 +74,7 @@ function AddRecipeModal({ onClose, onSubmit, type, products, initialIngredients,
             const token = getAuthToken();
             if (!token) return;
             try {
-                const res = await fetch("http://127.0.0.1:8002/materials/", {
+                const res = await fetch("https://bleu-stockservices.onrender.com/materials/", {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 const data = await res.json();

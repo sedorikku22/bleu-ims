@@ -18,7 +18,7 @@ function Login() {
       formData.append("username", credentials.username);
       formData.append("password", credentials.password);
 
-      const response = await fetch("http://localhost:4000/auth/token", {
+      const response = await fetch("https://authservices-npr8.onrender.com/auth/token", {
         method: "POST",
         headers: {
           "Content-Type": "application/x-www-form-urlencoded",

@@ -10,7 +10,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import loadingAnimation from "../../../assets/animation/loading.webm";
 
-const API_BASE_URL = "http://127.0.0.1:8006";
+const API_BASE_URL = "https://ims-blockchain.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 function RestockAuditLogs() {

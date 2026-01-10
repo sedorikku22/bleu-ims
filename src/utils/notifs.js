@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://127.0.0.1:8002";
+const API_BASE_URL = "https://bleu-stockservices.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 export async function fetchNotifications(unreadOnly = false) {

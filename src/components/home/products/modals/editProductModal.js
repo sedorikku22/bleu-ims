@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 import SearchableSelect from '../../recipeManagement/modals/searchableSelect';
 import "./editProductModal.css";
 
-const API_PRODUCT_TYPE_URL = "http://127.0.0.1:8001/ProductType";
-const API_PRODUCTS_URL = "http://127.0.0.1:8001/is_products/products/";
+const API_PRODUCT_TYPE_URL = "https://ims-productservices.onrender.com/ProductType";
+const API_PRODUCTS_URL = "https://ims-productservices.onrender.com/is_products/products/";
 
 const getAuthToken = () => localStorage.getItem("authToken");
 

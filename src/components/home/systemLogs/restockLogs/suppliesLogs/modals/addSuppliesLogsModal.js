@@ -3,7 +3,7 @@ import "./addSuppliesLogsModal.css";
 import { toast } from 'react-toastify';
 import ConfirmationSuppliesLogsModal from "./confirmationSuppliesLogsModal";
 
-const API_BASE_URL = "http://127.0.0.1:8003";
+const API_BASE_URL = "https://ims-restockservices.onrender.com";
 
 function AddSuppliesLogsModal({ onClose, onSubmit, currentSupply }) {
     const emptyFormData = {

@@ -16,11 +16,11 @@ import { confirmAlert } from 'react-confirm-alert';
 import "../../reactConfirmAlert.css";
 import loadingAnimation from "../../../assets/animation/loading.webm";
 
-const RECIPE_API_URL = "http://127.0.0.1:8004/recipes/";
-const PRODUCTS_API_URL = "http://127.0.0.1:8001/is_products/products/";
-const INGREDIENTS_API_URL = "http://127.0.0.1:8002/ingredients/";
-const SUPPLIES_API_URL = "http://127.0.0.1:8002/materials/";
-const PRODUCT_TYPES_API_URL = "http://127.0.0.1:8001/ProductType/";
+const RECIPE_API_URL = "https://ims-recipeservices.onrender.com/recipes/";
+const PRODUCTS_API_URL = "https://ims-productservices.onrender.com/is_products/products/";
+const INGREDIENTS_API_URL = "https://bleu-stockservices.onrender.com/ingredients/";
+const SUPPLIES_API_URL = "https://bleu-stockservices.onrender.com/materials/";
+const PRODUCT_TYPES_API_URL = "https://ims-productservices.onrender.com/ProductType/";
 
 const getAuthToken = () => localStorage.getItem("authToken");
 

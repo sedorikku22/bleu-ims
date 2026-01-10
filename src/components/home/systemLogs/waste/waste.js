@@ -27,13 +27,13 @@ function Waste() {
             const token = localStorage.getItem("authToken");
 
             // urls
-            const WASTE_URL = "http://127.0.0.1:8005/wastelogs/";
-            const ING_URL = "http://127.0.0.1:8002/ingredients/";
-            const ING_BATCH_URL = "http://127.0.0.1:8003/ingredient-batches/";
-            const MAT_URL = "http://127.0.0.1:8002/materials/";
-            const MAT_BATCH_URL = "http://127.0.0.1:8003/material-batches/";
-            const MERCH_URL = "http://127.0.0.1:8002/merchandise/";
-            const MERCH_BATCH_URL = "http://127.0.0.1:8003/merchandise-batches/";
+            const WASTE_URL = "https://bleu-wasteservices.onrender.com/wastelogs/";
+            const ING_URL = "https://bleu-stockservices.onrender.com/ingredients/";
+            const ING_BATCH_URL = "https://ims-restockservices.onrender.com/ingredient-batches/";
+            const MAT_URL = "https://bleu-stockservices.onrender.com/materials/";
+            const MAT_BATCH_URL = "https://ims-restockservices.onrender.com/material-batches/";
+            const MERCH_URL = "https://bleu-stockservices.onrender.com/merchandise/";
+            const MERCH_BATCH_URL = "https://ims-restockservices.onrender.com/merchandise-batches/";
 
             const headers = { Authorization: `Bearer ${token}` };
 

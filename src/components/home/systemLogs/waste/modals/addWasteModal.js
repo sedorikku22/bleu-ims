@@ -37,11 +37,11 @@ function AddWasteModal({ onClose, onSubmit, }) {
             let endpoint = "";
 
             if (rawType === "ingredients" || rawType === "ingredient") {
-                endpoint = "http://127.0.0.1:8002/ingredients/";
+                endpoint = "https://bleu-stockservices.onrender.com/ingredients/";
             } else if (rawType === "materials" || rawType === "material") {
-                endpoint = "http://127.0.0.1:8002/materials/";
+                endpoint = "https://bleu-stockservices.onrender.com/materials/";
             } else if (rawType === "merchandise") {
-                endpoint = "http://127.0.0.1:8002/merchandise/";
+                endpoint = "https://bleu-stockservices.onrender.com/merchandise/";
             } else {
                 setIsLoadingItems(false);
                 return;
@@ -151,7 +151,7 @@ function AddWasteModal({ onClose, onSubmit, }) {
             if (selectedType === "merchandise") {
                 unitValue = "pcs";
             }
-            const res = await fetch("http://127.0.0.1:8005/wastelogs/", {
+            const res = await fetch("https://bleu-wasteservices.onrender.com/wastelogs/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_BASE_URL = "http://127.0.0.1:8004";
+const API_BASE_URL = "https://ims-recipeservices.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 function EditRecipeModal({ recipe, onClose, onUpdate, products, ingredients: initialIngredients = [], supplies: availableSupplies = [] }) {

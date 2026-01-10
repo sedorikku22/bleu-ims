@@ -25,7 +25,7 @@ const Header = ({ pageTitle }) => {
   const handleLogout = useCallback(() => {
       localStorage.removeItem('authToken');
       localStorage.removeItem('username');
-      window.location.href = 'http://localhost:4002';
+      window.location.href = 'https://bleu-ums-zeta.vercel.app';
   }, []);
 
   // Dispatch custom event to toggle mobile sidebar

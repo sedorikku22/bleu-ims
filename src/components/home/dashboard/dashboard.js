@@ -97,15 +97,15 @@ const Dashboard = () => {
   const lowStockSections = ['Ingredients', 'Supplies & Materials', 'Merchandise'];
 
   // URLs for backend endpoints
-  const PRODUCT_COUNT_URL = "http://127.0.0.1:8001/is_products/count";
-  const INGREDIENT_STOCK_STATUS_URL = "http://127.0.0.1:8002/ingredients/stock-status-counts";
-  const MATERIAL_STOCK_STATUS_URL = "http://127.0.0.1:8002/materials/stock-status-counts";
-  const MERCH_STOCK_STATUS_URL = "http://127.0.0.1:8002/merchandise/stock-status-counts";
-  const INVENTORY_BY_CATEGORY_URL = "http://127.0.0.1:8001/is_products/inventory-by-category";
-  const STOCK_HISTORY_URL = "http://127.0.0.1:8002/stockhistory";
-  const LOW_STOCK_INGREDIENTS_URL = "http://127.0.0.1:8002/ingredients/low-stock";
-  const LOW_STOCK_MATERIALS_URL = "http://127.0.0.1:8002/materials/low-stock";
-  const LOW_STOCK_MERCHANDISE_URL = "http://127.0.0.1:8002/merchandise/low-stock";
+  const PRODUCT_COUNT_URL = "https://ims-productservices.onrender.com/is_products/count";
+  const INGREDIENT_STOCK_STATUS_URL = "https://bleu-stockservices.onrender.com/ingredients/stock-status-counts";
+  const MATERIAL_STOCK_STATUS_URL = "https://bleu-stockservices.onrender.com/materials/stock-status-counts";
+  const MERCH_STOCK_STATUS_URL = "https://bleu-stockservices.onrender.com/merchandise/stock-status-counts";
+  const INVENTORY_BY_CATEGORY_URL = "https://ims-productservices.onrender.com/is_products/inventory-by-category";
+  const STOCK_HISTORY_URL = "https://bleu-stockservices.onrender.com/stockhistory";
+  const LOW_STOCK_INGREDIENTS_URL = "hhttps://bleu-stockservices.onrender.com/ingredients/low-stock";
+  const LOW_STOCK_MATERIALS_URL = "https://bleu-stockservices.onrender.com/materials/low-stock";
+  const LOW_STOCK_MERCHANDISE_URL = "https://bleu-stockservices.onrender.com/merchandise/low-stock";
 
   const handletotalItemsClick = () => {
     navigate('/home/products');

@@ -3,7 +3,7 @@ import "./editMerchandiseModal.css";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const API_BASE_URL = "http://127.0.0.1:8002";
+const API_BASE_URL = "https://bleu-stockservices.onrender.com";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 function EditMerchandiseModal({ merchandise, onClose, onUpdate }) {

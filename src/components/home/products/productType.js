@@ -7,7 +7,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { confirmAlert } from "react-confirm-alert"; 
 import "../../reactConfirmAlert.css";
 
-const API_BASE_URL = "http://127.0.0.1:8001/ProductType";
+const API_BASE_URL = "https://ims-productservices.onrender.com/ProductType";
 const getAuthToken = () => localStorage.getItem("authToken");
 
 const ProductTypeModal = ({ onClose }) => {

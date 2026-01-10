@@ -24,7 +24,7 @@ import WasteAuditLogs from './components/home/auditLogs/wasteAuditLogs';
 
 function RedirectToLoginSystem() {
   useEffect(() => {
-    window.location.href = "http://localhost:4002/";
+    window.location.href = "https://bleu-ums-zeta.vercel.app/";
   }, []);
 
   return null; 
