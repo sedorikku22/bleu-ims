@@ -19,7 +19,7 @@ function formatDateTime(dateString) {
     return `${year}-${month}-${day} ${hours}:${minutes}`;
 }
 
-const API_BASE_URL = "https://ims-restockservices.onrender.comv";
+const API_BASE_URL = "https://ims-restockservices.onrender.com";
 
 function IngredientsLogsContent() {
     const [ingredientRecords, setIngredientRecords] = useState([]);
