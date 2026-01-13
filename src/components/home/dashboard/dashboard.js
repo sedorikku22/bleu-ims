@@ -101,7 +101,7 @@ const Dashboard = () => {
   const MATERIAL_STOCK_STATUS_URL = "https://bleu-stockservices.onrender.com/materials/stock-status-counts";
   const MERCH_STOCK_STATUS_URL = "https://bleu-stockservices.onrender.com/merchandise/stock-status-counts";
   const INVENTORY_BY_CATEGORY_URL = "https://ims-productservices.onrender.com/is_products/inventory-by-category";
-  const STOCK_HISTORY_URL = "https://bleu-stockservices.onrender.com/stockhistory";
+  const STOCK_HISTORY_URL = "https://bleu-stockservices.onrender.com/stockhistory/";
   const LOW_STOCK_INGREDIENTS_URL = "https://bleu-stockservices.onrender.com/ingredients/low-stock";
   const LOW_STOCK_MATERIALS_URL = "https://bleu-stockservices.onrender.com/materials/low-stock";
   const LOW_STOCK_MERCHANDISE_URL = "https://bleu-stockservices.onrender.com/merchandise/low-stock";
