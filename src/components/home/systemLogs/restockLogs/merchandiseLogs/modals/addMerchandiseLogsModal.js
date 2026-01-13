@@ -131,6 +131,7 @@ function AddMerchandiseLogsModal({ onClose, onSubmit, currentMerchandise }) {
                                         onChange={handleChange}
                                         onFocus={() => handleFocus("batchDate")}
                                         className={errors.batchDate ? "error" : ""}
+                                        min={new Date().toISOString().split('T')[0]}
                                     />
                                     {errors.batchDate && <p className="addMerchandiseLogs-error-message">{errors.batchDate}</p>}
                                 </div>

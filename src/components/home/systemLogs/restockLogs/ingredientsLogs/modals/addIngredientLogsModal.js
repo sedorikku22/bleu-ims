@@ -177,6 +177,7 @@ function AddIngredientLogsModal({ onClose, onSubmit, selectedIngredient }) {
                                         onChange={handleChange}
                                         onFocus={() => handleFocus("batchDate")}
                                         className={errors.batchDate ? "error" : ""}
+                                        min={new Date().toISOString().split('T')[0]}
                                     />
                                     {errors.batchDate && <p className="addIngredientLogs-error-message">{errors.batchDate}</p>}
                                 </div>
@@ -191,6 +192,7 @@ function AddIngredientLogsModal({ onClose, onSubmit, selectedIngredient }) {
                                         onChange={handleChange}
                                         onFocus={() => handleFocus("expirationDate")}
                                         className={errors.expirationDate ? "error" : ""}
+                                        min={formData.batchDate}
                                     />
                                     {errors.expirationDate && <p className="addIngredientLogs-error-message">{errors.expirationDate}</p>}
                                 </div>

@@ -85,9 +85,10 @@ function MerchandiseAuditLogs() {
 
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = item.MerchandiseName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = item.MerchandiseName.toLowerCase().includes(normalizedSearch) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -177,7 +178,7 @@ function MerchandiseAuditLogs() {
                             className="merch-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="merch-filter-audit-container">
                             <label htmlFor="merch-filter-audit">Filter by Action: </label>
@@ -213,6 +214,7 @@ function MerchandiseAuditLogs() {
                                 id="merch-date-to"
                                 className="merch-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

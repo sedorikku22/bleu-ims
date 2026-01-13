@@ -88,10 +88,10 @@ function RecipeAuditLogs() {
     // filter and sort logs
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = item.RecipeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.Category.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = item.RecipeName.toLowerCase().includes(normalizedSearch) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -154,8 +154,8 @@ function RecipeAuditLogs() {
                 return <span className={className}>{row.action}</span>;
             }
         },
-        { name: "RECIPE NAME", selector: (row) => row.RecipeName, width: "25%", center: true },
-        { name: "CATEGORY", selector: (row) => row.Category, width: "30%", center: true },
+        { name: "RECIPE NAME", selector: (row) => row.RecipeName, width: "28%", center: true },
+        { name: "", selector: (row) => row.Category, width: "30%", center: true },
     ];
 
     return (
@@ -172,7 +172,7 @@ function RecipeAuditLogs() {
                             className="recipe-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="filter-recipe-audit-container">
                             <label htmlFor="filter-recipe-audit">Filter by Action: </label>
@@ -207,6 +207,7 @@ function RecipeAuditLogs() {
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

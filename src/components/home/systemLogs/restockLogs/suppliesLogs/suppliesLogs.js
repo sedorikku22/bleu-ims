@@ -75,7 +75,8 @@ function SuppliesLogsContent() {
 
     const filteredSupplies = suppliesRecords
         .filter(item => {
-            const matchesSearch = item.Material.toLowerCase().includes(searchQuery.toLowerCase());
+            const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim query
+            const matchesSearch = item.Material.toLowerCase().includes(normalizedSearch);
             const matchesStatus = statusFilter === 'all' || item.Status === statusFilter;
 
             let matchesDateRange = true;
@@ -112,7 +113,7 @@ function SuppliesLogsContent() {
                         className="supplies-logs-search-box"
                         placeholder="Search Supplies..."
                         value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
+                        onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                     />
 
                     <div className="filter-supplies-container">
@@ -147,6 +148,7 @@ function SuppliesLogsContent() {
                             id="date-to"
                             className="date-filter-input"
                             value={dateTo}
+                            min={dateFrom}
                             onChange={(e) => setDateTo(e.target.value)}
                         />
                     </div>

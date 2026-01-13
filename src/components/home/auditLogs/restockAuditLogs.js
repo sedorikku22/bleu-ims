@@ -91,10 +91,11 @@ function RestockAuditLogs() {
     // filter and sort logs
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = (item.ItemType && item.ItemType.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                (item.LoggedBy && item.LoggedBy.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = (item.ItemType && item.ItemType.toLowerCase().includes(normalizedSearch)) ||
+                (item.LoggedBy && item.LoggedBy.toLowerCase().includes(normalizedSearch)) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -177,7 +178,7 @@ function RestockAuditLogs() {
                             className="restock-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="restock-filter-audit-container">
                             <label htmlFor="restock-filter-audit">Filter by Action: </label>
@@ -210,6 +211,7 @@ function RestockAuditLogs() {
                                 id="restock-date-to"
                                 className="restock-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

@@ -47,7 +47,9 @@ function Merchandise() {
     // filtering and sorting data
     const filteredSortedMerchandise = merchandise
     .filter((item) => {
-        const matchesSearch = item.MerchandiseName.toLowerCase().includes(searchQuery.toLowerCase());
+        const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim search query
+        const normalizedItemName = item.MerchandiseName.toLowerCase().trim(); // Normalize and trim merchandise name
+        const matchesSearch = normalizedItemName.includes(normalizedSearch);
 
         // status filtering
         let matchesStatus = true;
@@ -276,7 +278,7 @@ function Merchandise() {
                             className="merch-search-box"
                             placeholder="Search merchandise..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
 
 
@@ -298,6 +300,7 @@ function Merchandise() {
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

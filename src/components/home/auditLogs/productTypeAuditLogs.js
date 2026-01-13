@@ -88,9 +88,10 @@ function ProductTypeAuditLogs() {
     // filtering and sorting data
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = item.productTypeName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim search query
+            const matchesSearch = item.productTypeName.toLowerCase().includes(normalizedSearch) ||
+                                item.action.toLowerCase().includes(normalizedSearch) ||
+                                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
             
             let matchesDateRange = true;
@@ -139,10 +140,10 @@ function ProductTypeAuditLogs() {
             });
             return formattedDate.replace(",", "");
         },
-        width: "12%",
+        width: "14%",
         center: false,},
         { name: "USER", selector: (row) => row.user_id || "N/A", width: "15%", center: true },
-        { name: "ACTION", selector: (row) => row.action, width: "18%", center: true,
+        { name: "ACTION", selector: (row) => row.action, width: "20%", center: true,
             cell: (row) => {
                 let className = "";
                 if (row.action === "CREATE") className = "prodtype-action-create";
@@ -173,7 +174,7 @@ function ProductTypeAuditLogs() {
                             className="prodtype-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="filter-prodtype-audit-container">
                             <label htmlFor="filter-prodtype-audit">Filter by Action: </label>
@@ -208,6 +209,7 @@ function ProductTypeAuditLogs() {
                                 id="prodtype-date-to"
                                 className="prodtype-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>
