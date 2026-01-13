@@ -76,8 +76,7 @@ function IngredientsLogsContent() {
 
     const filteredIngredients = ingredientRecords
         .filter(item => {
-            const query = searchQuery.toLowerCase();
-
+            const query = searchQuery.toLowerCase().trim();
             const matchesSearch = item.Ingredient.toLowerCase().includes(query) ||
                                  item.Status.toLowerCase().includes(query);
 
@@ -118,7 +117,7 @@ function IngredientsLogsContent() {
                         className="ingredients-logs-search-box"
                         placeholder="Search Ingredient..."
                         value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
+                        onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                     />
 
                     <div className="date-filter-container">
@@ -139,6 +138,7 @@ function IngredientsLogsContent() {
                             id="date-to"
                             className="date-filter-input"
                             value={dateTo}
+                            min={dateFrom}
                             onChange={(e) => setDateTo(e.target.value)}
                         />
                     </div>

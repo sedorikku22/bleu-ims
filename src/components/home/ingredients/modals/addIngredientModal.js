@@ -171,6 +171,7 @@ function AddIngredientModal({ onClose, onSuccess }) {
                                 onChange={(e) => setBestBeforeDate(e.target.value)}
                                 onFocus={() => handleFocus('bestBeforeDate')}
                                 className={errors.bestBeforeDate ? "addIngredient-error" : ""}
+                                min={new Date().toISOString().split('T')[0]}
                             />
                             {errors.bestBeforeDate && <p className="addIngredient-error-message">{errors.bestBeforeDate}</p>}
                         </label>
@@ -183,6 +184,7 @@ function AddIngredientModal({ onClose, onSuccess }) {
                                 onChange={(e) => setExpirationDate(e.target.value)}
                                 onFocus={() => handleFocus('expirationDate')}
                                 className={errors.expirationDate ? "addIngredient-error" : ""}
+                                min={bestBeforeDate}
                             />
                             {errors.expirationDate && <p className="addIngredient-error-message">{errors.expirationDate}</p>}
                         </label>

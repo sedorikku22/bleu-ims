@@ -95,7 +95,7 @@ function Waste() {
 
                 let batchDate = log.BatchDate || log.batch_date || "-";
                 if (batchDate && batchDate !== "-") {
-                    batchDate = new Date(batchDate).toLocaleDateString();
+                    batchDate = new Date(batchDate).toISOString().split('T')[0];
                 }
 
                 return {
@@ -107,7 +107,7 @@ function Waste() {
                     Amount: log.Amount,
                     Unit: log.Unit,
                     Reason: log.WasteReason,
-                    Date: new Date(log.WasteDate).toLocaleDateString(),
+                    Date: new Date(log.WasteDate).toISOString().split('T')[0],
                     LoggedBy: log.LoggedBy,
                     Notes: log.Notes || ""
                 };
@@ -133,10 +133,10 @@ function Waste() {
 
     const filteredSortedWaste = wasteRecords
         .filter(item => {
-            const query = searchQuery.toLowerCase();
+            const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim query
             const matchesSearch = 
-                item.ItemType.toLowerCase().includes(query) ||
-                item.ItemName.toLowerCase().includes(query);
+                item.ItemType.toLowerCase().includes(normalizedSearch) || 
+                item.ItemName.toLowerCase().includes(normalizedSearch);
             
             // date range filtering using BatchDate
             let matchesDateRange = true;
@@ -178,7 +178,7 @@ function Waste() {
                             className="waste-search-box"
                             placeholder="Search Item Type or Item Name..."
                             value={searchQuery}
-                            onChange={e => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         
                         <div className="date-filter-container">
@@ -199,6 +199,7 @@ function Waste() {
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

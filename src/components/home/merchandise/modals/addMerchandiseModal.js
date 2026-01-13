@@ -124,6 +124,7 @@ function AddMerchandiseModal({ onClose, onSubmit}) {
                                 onChange={(e) => setDateAdded(e.target.value)}
                                 onFocus={() => handleFocus('dateAdded')}
                                 className={errors.dateAdded ? "addMerchandise-error" : ""}
+                                min={new Date().toISOString().split('T')[0]}
                             />
                             {errors.dateAdded && <p className="addMerchandise-error-message">{errors.dateAdded}</p>}
                         </label>

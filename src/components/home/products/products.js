@@ -68,7 +68,6 @@ function Products() {
   }, [navigate]);
 
   const toggleDropdown = () => setDropdownOpen(!isDropdownOpen);
-  const handleSearchChange = (e) => setSearchTerm(e.target.value);
   const handleSortChange = (e) => setSortOption(e.target.value);
 
   const sortProducts = (list) => {
@@ -282,12 +281,22 @@ function Products() {
     navigate('/');
   };
 
+  const handleSearchChange = (e) => {
+    const searchValue = e.target.value;
+    setSearchTerm(searchValue.trimStart()); // Trim leading spaces
+  };
+
   const filteredProducts = sortProducts(
-    products.filter(product =>
-      product &&
-      (activeTab === null || product.ProductTypeID === activeTab) && 
-      (product.ProductName && product.ProductName.toLowerCase().includes(searchTerm.toLowerCase()))
-    )
+    products.filter(product => {
+      const normalizedSearchTerm = searchTerm.toLowerCase().trim(); // Handle leading/trailing spaces and case
+      const normalizedProductName = product.ProductName.toLowerCase().trim(); // Normalize product name
+
+      return (
+        product &&
+        (activeTab === null || product.ProductTypeID === activeTab) && 
+        (normalizedProductName.includes(normalizedSearchTerm)) // Compare case-insensitively
+      );
+    })
   );
 
   return (

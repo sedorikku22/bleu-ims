@@ -50,6 +50,25 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
+  // Periodic check for token expiration
+  useEffect(() => {
+    const checkTokenExpiration = () => {
+      const token = localStorage.getItem('authToken');
+      if (token && !isTokenValid(token)) {
+        logout();
+        window.location.href = "https://bleu-ums-zeta.vercel.app/";
+      }
+    };
+
+    // Check every 5 minutes (300000 milliseconds)
+    const interval = setInterval(checkTokenExpiration, 300000);
+
+    // Initial check
+    checkTokenExpiration();
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Login function to set login state and store token
   const login = (token) => {
     localStorage.setItem('authToken', token);

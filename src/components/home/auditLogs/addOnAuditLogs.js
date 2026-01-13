@@ -88,10 +88,11 @@ function AddOnAuditLogs() {
     // filter and sort logs
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = item.addOnName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.ingredientName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = item.addOnName.toLowerCase().includes(normalizedSearch) ||
+                item.ingredientName.toLowerCase().includes(normalizedSearch) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -174,7 +175,7 @@ function AddOnAuditLogs() {
                             className="addon-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="filter-addon-audit-container">
                             <label htmlFor="filter-addon-audit">Filter by Action: </label>
@@ -209,6 +210,7 @@ function AddOnAuditLogs() {
                                 id="addon-date-to"
                                 className="addon-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

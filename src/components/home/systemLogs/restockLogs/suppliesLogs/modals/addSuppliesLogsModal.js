@@ -174,6 +174,7 @@ function AddSuppliesLogsModal({ onClose, onSubmit, currentSupply }) {
                                         onChange={handleChange}
                                         onFocus={() => handleFocus("batchDate")}
                                         className={errors.batchDate ? "error" : ""}
+                                        min={new Date().toISOString().split('T')[0]}
                                     />
                                     {errors.batchDate && <p className="addSuppliesLogs-error-message">{errors.batchDate}</p>}
                                 </div>

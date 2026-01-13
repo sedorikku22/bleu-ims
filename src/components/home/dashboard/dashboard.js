@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./dashboard.css";
+import BlockchainAuditReport from './BlockchainAuditReport';
 import LowStockModal from './lowStockModal';
 import Sidebar from "../../sidebar";
 import {
@@ -14,10 +15,8 @@ import {
   faCubes,
   faBox,
   faExclamationTriangle,
-  faFileExport,
   faChevronLeft,
   faChevronRight,
-  faDownload
 } from '@fortawesome/free-solid-svg-icons';
 import Header from "../../header";
 import { getAuthHeaders } from './AuthContext';
@@ -176,138 +175,126 @@ const Dashboard = () => {
     ]
   };
 
-  // Fetch dashboard data
   useEffect(() => {
-    const fetchDashboardData = async () => {
-      try {
-        const headers = getAuthHeaders();
+  const fetchDashboardData = async () => {
+    try {
+      const headers = getAuthHeaders();
 
-        // Fetch total products count
-        const prodRes = await fetch(PRODUCT_COUNT_URL, { headers });
-        const prodData = prodRes.ok ? await prodRes.json() : { count: 0 };
-        setTotalProducts(prodData.count || 0);
+      const prodRes = await fetch(PRODUCT_COUNT_URL, { headers });
+      const prodData = prodRes.ok ? await prodRes.json() : { count: 0 };
+      setTotalProducts(prodData.count || 0);
 
-        // Fetch stock status counts from all three services
-        const [ingRes, matRes, merchRes] = await Promise.all([
-          fetch(INGREDIENT_STOCK_STATUS_URL, { headers }),
-          fetch(MATERIAL_STOCK_STATUS_URL, { headers }),
-          fetch(MERCH_STOCK_STATUS_URL, { headers }),
-        ]);
+      const [ingRes, matRes, merchRes] = await Promise.all([
+        fetch(INGREDIENT_STOCK_STATUS_URL, { headers }),
+        fetch(MATERIAL_STOCK_STATUS_URL, { headers }),
+        fetch(MERCH_STOCK_STATUS_URL, { headers }),
+      ]);
 
-        // Process stock status data
-        const ingData = ingRes.ok ? await ingRes.json() : {};
-        const matData = matRes.ok ? await matRes.json() : {};
-        const merchData = merchRes.ok ? await merchRes.json() : {};
+      // Process stock status data
+      const ingData = ingRes.ok ? await ingRes.json() : {};
+      const matData = matRes.ok ? await matRes.json() : {};
+      const merchData = merchRes.ok ? await merchRes.json() : {};
 
-        // Aggregate stock counts
-        const totalAvailable = (ingData.available || 0) + (matData.available || 0) + (merchData.available || 0);
-        const totalLowStock = (ingData.low_stock || 0) + (matData.low_stock || 0) + (merchData.low_stock || 0);
-        const totalNotAvailable = (ingData.not_available || 0) + (matData.not_available || 0) + (merchData.not_available || 0);
+      const totalAvailable = (ingData.available || 0) + (matData.available || 0) + (merchData.available || 0);
+      const totalLowStock = (ingData.low_stock || 0) + (matData.low_stock || 0) + (merchData.low_stock || 0);
+      const totalNotAvailable = (ingData.not_available || 0) + (matData.not_available || 0) + (merchData.not_available || 0);
 
-        setAvailableStock(totalAvailable);
-        setLowStock(totalLowStock);
-        setNotAvailable(totalNotAvailable);
+      setAvailableStock(totalAvailable);
+      setLowStock(totalLowStock);
+      setNotAvailable(totalNotAvailable);
 
-        // Fetch inventory by category
-        const categoryRes = await fetch(INVENTORY_BY_CATEGORY_URL, { headers });
-        const categoryData = categoryRes.ok ? await categoryRes.json() : [];
-        setInventoryByCategory(categoryData);
+      // Fetch inventory by category
+      const categoryRes = await fetch(INVENTORY_BY_CATEGORY_URL, { headers });
+      const categoryData = categoryRes.ok ? await categoryRes.json() : [];
+      setInventoryByCategory(categoryData);
 
-        //  Fetch 7-day stock level history
-        const historyRes = await fetch(STOCK_HISTORY_URL, { headers });
+      //  Fetch 7-day stock level history
+      const historyRes = await fetch(STOCK_HISTORY_URL, { headers });
 
-        let historyData = [];
-        if (historyRes.ok) {
-          historyData = await historyRes.json();
-        }
-
-        // Format data
-        const formattedTrend = historyData.map(entry => ({
-          date: new Date(entry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
-          stockLevel: entry.total_stock
-        }));
-        setStockLevelsTrend(formattedTrend);
-
-        // fetch low stock items
-        const [lowIngRes, lowMatRes, lowMerchRes] = await Promise.all([
-          fetch(LOW_STOCK_INGREDIENTS_URL, { headers }),
-          fetch(LOW_STOCK_MATERIALS_URL, { headers }),
-          fetch(LOW_STOCK_MERCHANDISE_URL, { headers })
-        ]);
-
-        const lowIngData = lowIngRes.ok ? await lowIngRes.json() : [];
-        const lowMatData = lowMatRes.ok ? await lowMatRes.json() : [];
-        const lowMerchData = lowMerchRes.ok ? await lowMerchRes.json() : [];
-
-        // Standardize structure and merge them
-        const combinedLowStock = [
-          ...lowIngData.map(item => ({
-            id: item.id,
-            name: item.name,
-            inStock: parseFloat(item.in_stock),  // Ensure it's a number
-            lastRestocked: item.last_restocked
-              ? new Date(item.last_restocked).toLocaleString('en-CA', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false
-                }).replace(',', '')
-              : 'N/A',
-            status: item.status,
-            type: 'Ingredient'
-          })),
-          ...lowMatData.map(item => ({
-            id: item.id,
-            name: item.name,
-            inStock: parseFloat(item.in_stock),
-            lastRestocked: item.last_restocked
-              ? new Date(item.last_restocked).toLocaleString('en-CA', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false
-                }).replace(',', '')
-              : 'N/A',
-            status: item.status,
-            type: 'Material'
-          })),
-          ...lowMerchData.map(item => ({
-            id: item.id,
-            name: item.name,
-            inStock: parseFloat(item.in_stock),
-            lastRestocked: item.last_restocked
-              ? new Date(item.last_restocked).toLocaleString('en-CA', {
-                  year: 'numeric',
-                  month: '2-digit',
-                  day: '2-digit',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  hour12: false
-                }).replace(',', '')
-              : 'N/A',
-            status: item.status,
-            type: 'Merchandise'
-          }))
-        ];
-
-        setLowStockItems(combinedLowStock);
-      
-        // Set mock data for new sections (repla
-        setAuditData(mockAuditData);
-
-      } catch (error) {
-        console.error('Error fetching dashboard data:', error);
-        // Set mock data as fallback
-        setAuditData(mockAuditData);
+      let historyData = [];
+      if (historyRes.ok) {
+        historyData = await historyRes.json();
       }
-    };
 
-    fetchDashboardData();
-  }, []);
+      const formattedTrend = historyData.map(entry => ({
+        date: new Date(entry.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+        stockLevel: entry.total_stock
+      }));
+      setStockLevelsTrend(formattedTrend);
+
+      // fetch low stock items
+      const [lowIngRes, lowMatRes, lowMerchRes] = await Promise.all([
+        fetch(LOW_STOCK_INGREDIENTS_URL, { headers }),
+        fetch(LOW_STOCK_MATERIALS_URL, { headers }),
+        fetch(LOW_STOCK_MERCHANDISE_URL, { headers })
+      ]);
+
+      const lowIngData = lowIngRes.ok ? await lowIngRes.json() : [];
+      const lowMatData = lowMatRes.ok ? await lowMatRes.json() : [];
+      const lowMerchData = lowMerchRes.ok ? await lowMerchRes.json() : [];
+
+      const combinedLowStock = [
+        ...lowIngData.map(item => ({
+          id: item.id,
+          name: item.name,
+          inStock: parseFloat(item.in_stock),
+          lastRestocked: item.last_restocked
+            ? new Date(item.last_restocked).toLocaleString('en-CA', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+              }).replace(',', '')
+            : 'N/A',
+          status: item.status,
+          type: 'Ingredient'
+        })),
+        ...lowMatData.map(item => ({
+          id: item.id,
+          name: item.name,
+          inStock: parseFloat(item.in_stock),
+          lastRestocked: item.last_restocked
+            ? new Date(item.last_restocked).toLocaleString('en-CA', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+              }).replace(',', '')
+            : 'N/A',
+          status: item.status,
+          type: 'Material'
+        })),
+        ...lowMerchData.map(item => ({
+          id: item.id,
+          name: item.name,
+          inStock: parseFloat(item.in_stock),
+          lastRestocked: item.last_restocked
+            ? new Date(item.last_restocked).toLocaleString('en-CA', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+              }).replace(',', '')
+            : 'N/A',
+          status: item.status,
+          type: 'Merchandise'
+        }))
+      ];
+
+      setLowStockItems(combinedLowStock);
+    } catch (error) {
+      console.error('Error fetching dashboard data:', error);
+    }
+  };
+
+  fetchDashboardData();
+}, []);
 
   const formatValue = (value, format) => {
     return format === "currency"
@@ -355,7 +342,7 @@ const Dashboard = () => {
   };
 
   const exportToPDF = () => {
-    // Implementation for PDF export
+    
     console.log('Exporting to PDF with filters:', { startDate, endDate });
     alert(`PDF export functionality would be implemented here. Filters: From ${startDate || 'N/A'} to ${endDate || 'N/A'}`);
   };
@@ -587,88 +574,7 @@ const Dashboard = () => {
           />
 
           {/* Audit Report Section */}
-          <div className="dashboard-section audit-report-section">
-            <div className="section-header">
-              <div className="section-title">
-                <FontAwesomeIcon icon={faFileExport} />
-                <span>Audit Report</span>
-                <button className="info-btn">ℹ</button>
-              </div>
-              <div className="audit-controls">
-                <div className="date-filters">
-                  <label>From:</label>
-                  <input
-                    type="date"
-                    value={startDate}
-                    onChange={(e) => setStartDate(e.target.value)}
-                  />
-                  <label>To:</label>
-                  <input
-                    type="date"
-                    value={endDate}
-                    onChange={(e) => setEndDate(e.target.value)}
-                  />
-                </div>
-                <button className="view-all-btn" onClick={exportToPDF}>
-                  <FontAwesomeIcon icon={faDownload} />
-                  Export PDF
-                </button>
-              </div>
-            </div>
-            <div className="section-content">
-              <div className="audit-navigation">
-                <button 
-                  className="nav-btn"
-                  onClick={() => handleAuditNavigation('prev')}
-                  disabled={currentAuditSection === 0}
-                >
-                  <FontAwesomeIcon icon={faChevronLeft} />
-                </button>
-                <span className="audit-section-title">
-                  {auditSections[currentAuditSection]}
-                </span>
-                <button 
-                  className="nav-btn"
-                  onClick={() => handleAuditNavigation('next')}
-                  disabled={currentAuditSection === auditSections.length - 1}
-                >
-                  <FontAwesomeIcon icon={faChevronRight} />
-                </button>
-              </div>
-              <table className="audit-table">
-                <thead>
-                  <tr>
-                    <th>Timestamp</th>
-                    <th>Action Taken</th>
-                    <th>Product Name</th>
-                    <th>Category</th>
-                    <th>Price</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {getCurrentAuditData().map((item) => {
-                    let actionClass = "";
-                    if (item.actionTaken === "CREATE") actionClass = "action-create";
-                    else if (item.actionTaken === "UPDATE") actionClass = "action-update";
-                    else if (item.actionTaken === "DELETE") actionClass = "action-delete";
-                    else actionClass = "";
-
-                    return (
-                      <tr key={item.id}>
-                        <td>{item.timestamp}</td>
-                        <td><span className={actionClass}>{item.actionTaken}</span></td>
-                        <td>{item.productName}</td>
-                        <td>{item.category}</td>
-                        <td>₱{item.price.toFixed(2)}</td>
-                        <td>{item.status}</td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <BlockchainAuditReport />
         </div>
       </main>
     </div>

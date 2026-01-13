@@ -81,7 +81,8 @@ function MerchandiseLogsContent() {
 
     const filteredMerchandise = merchandiseRecords
         .filter(item => {
-            const matchesSearch = item.Merchandise.toLowerCase().includes(searchQuery.toLowerCase());
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = item.Merchandise.toLowerCase().includes(normalizedSearch);
             const matchesStatus = statusFilter === 'all' || item.Status === statusFilter;
 
             // date range filter
@@ -126,7 +127,7 @@ function MerchandiseLogsContent() {
                         className="merchandise-logs-search-box"
                         placeholder="Search Merchandise..."
                         value={searchQuery}
-                        onChange={e => setSearchQuery(e.target.value)}
+                        onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                     />
 
                     {/* Status Filter */}
@@ -165,6 +166,7 @@ function MerchandiseLogsContent() {
                             id="date-to"
                             className="date-filter-input"
                             value={dateTo}
+                            min={dateFrom}
                             onChange={(e) => setDateTo(e.target.value)}
                         />
                     </div>

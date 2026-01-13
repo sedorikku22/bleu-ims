@@ -88,9 +88,10 @@ function MaterialsAuditLogs() {
     // filter and sort logs
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = item.MaterialName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = item.MaterialName.toLowerCase().includes(normalizedSearch) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch  ));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -153,13 +154,12 @@ function MaterialsAuditLogs() {
                 return <span className={className}>{row.action}</span>;
             }
         },
-        { name: "MATERIAL NAME", selector: (row) => row.MaterialName, width: "20%", center: true },
+        { name: "MATERIAL NAME", selector: (row) => row.MaterialName, width: "30%", center: true },
         {
-            name: "QUANTITY", selector: (row) => row.MaterialQuantity, width: "12%", center: true,
+            name: "QUANTITY", selector: (row) => row.MaterialQuantity, width: "15%", center: true,
             cell: (row) => <span>{row.MaterialQuantity !== null ? row.MaterialQuantity : 'N/A'}</span>
         },
-        { name: "DATE ADDED", selector: (row) => row.MaterialDateAdded || "N/A", width: "15%", center: true },
-        { name: "STATUS", selector: (row) => row.Status, width: "12%", center: true },
+        { name: "STATUS", selector: (row) => row.Status, width: "17%", center: true },
     ];
 
     return (
@@ -176,7 +176,7 @@ function MaterialsAuditLogs() {
                             className="materials-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="materials-filter-audit-container">
                             <label htmlFor="materials-filter-audit">Filter by Action: </label>
@@ -211,6 +211,7 @@ function MaterialsAuditLogs() {
                                 id="materials-date-to"
                                 className="materials-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

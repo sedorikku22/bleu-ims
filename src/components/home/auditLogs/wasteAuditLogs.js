@@ -85,11 +85,12 @@ function WasteAuditLogs() {
 
     const filteredSortedLogs = logs
         .filter((item) => {
-            const matchesSearch = (item.ItemType && item.ItemType.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                (item.WasteReason && item.WasteReason.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                (item.LoggedBy && item.LoggedBy.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                (item.user_id && item.user_id.toString().includes(searchQuery));
+            const normalizedSearch = searchQuery.toLowerCase().trim();
+            const matchesSearch = (item.ItemType && item.ItemType.toLowerCase().includes(normalizedSearch)) ||
+                (item.WasteReason && item.WasteReason.toLowerCase().includes(normalizedSearch)) ||
+                (item.LoggedBy && item.LoggedBy.toLowerCase().includes(normalizedSearch)) ||
+                item.action.toLowerCase().includes(normalizedSearch) ||
+                (item.user_id && item.user_id.toString().includes(normalizedSearch));
             const matchesAction = filterAction === "all" || item.action === filterAction;
 
             let matchesDateRange = true;
@@ -173,7 +174,7 @@ function WasteAuditLogs() {
                             className="waste-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="waste-filter-audit-container">
                             <label htmlFor="waste-filter-audit">Filter by Action: </label>
@@ -206,6 +207,7 @@ function WasteAuditLogs() {
                                 id="waste-date-to"
                                 className="waste-date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

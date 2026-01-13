@@ -143,6 +143,7 @@ function AddSupplyModal({ onClose, onSubmit }) {
                             onChange={(e) => setSupplyDate(e.target.value)}
                             onFocus={() => handleFocus('supplyDate')}
                             className={errors.DateAdded ? "addSupply-error" : ""}
+                            min={new Date().toISOString().split('T')[0]}
                         />
                         {errors.supplyDate && <p className="addSupply-error-message">{errors.DateAdded}</p>}
                     </label>

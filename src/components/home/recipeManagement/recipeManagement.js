@@ -20,7 +20,7 @@ const RECIPE_API_URL = "https://ims-recipeservices.onrender.com/recipes/";
 const PRODUCTS_API_URL = "https://ims-productservices.onrender.com/is_products/products/";
 const INGREDIENTS_API_URL = "https://bleu-stockservices.onrender.com/ingredients/";
 const SUPPLIES_API_URL = "https://bleu-stockservices.onrender.com/materials/";
-const PRODUCT_TYPES_API_URL = "https://ims-productservices.onrender.com/ProductType/";
+const PRODUCT_TYPES_API_URL = "https://ims-productservices.onrender.com1/ProductType/";
 
 const getAuthToken = () => localStorage.getItem("authToken");
 
@@ -218,19 +218,21 @@ function RecipeManagement() {
 
     const filteredRecipes = useMemo(() => {
         let filtered = groupedRecipes[activeTab] || [];
-        
+
+        // Filter by category (if a category is selected)
         if (selectedCategory) {
             filtered = filtered.filter(recipe => recipe.category === selectedCategory);
         }
-        
+
+        // Apply search term filter
         if (searchTerm.trim()) {
-            const term = searchTerm.toLowerCase();
-            filtered = filtered.filter(recipe => 
-                recipe.name.toLowerCase().includes(term) ||
-                recipe.description.toLowerCase().includes(term)
+            const term = searchTerm.toLowerCase().trim(); // Normalize and trim search term
+            filtered = filtered.filter(recipe =>
+                recipe.name.toLowerCase().trim().includes(term) ||
+                recipe.description.toLowerCase().trim().includes(term)
             );
         }
-        
+
         return filtered;
     }, [groupedRecipes, activeTab, selectedCategory, searchTerm]);
 
@@ -322,7 +324,7 @@ function RecipeManagement() {
                             className="search-box" 
                             placeholder="Search recipes..." 
                             value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
+                            onChange={(e) => setSearchTerm(e.target.value.trimStart())}
                         />
                         
                         <div className="category-filter-container">

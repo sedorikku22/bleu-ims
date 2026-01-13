@@ -47,7 +47,9 @@ function Supplies() {
     // filtering and sorting
     const filteredSupplies = supplies
     .filter((item) => {
-        const matchesSearch = item.MaterialName.toLowerCase().includes(searchQuery.toLowerCase());
+        const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim search query
+        const normalizedSupplyName = item.MaterialName.toLowerCase().trim(); // Normalize and trim supply name
+        const matchesSearch = normalizedSupplyName.includes(normalizedSearch);
 
         // status filtering
         let matchesStatus = true;
@@ -268,7 +270,7 @@ function Supplies() {
                             className="supply-search-box"
                             placeholder="Search supplies..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
 
 
@@ -290,6 +292,7 @@ function Supplies() {
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

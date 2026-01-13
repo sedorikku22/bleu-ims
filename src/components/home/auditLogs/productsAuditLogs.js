@@ -90,10 +90,11 @@ function ProductsAuditLogs() {
     // filtering and sorting data
 const filteredSortedLogs = logs
 .filter((item) => {
-    const matchesSearch = item.ProductName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        item.ProductCategory.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        item.action.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                        (item.user_id && item.user_id.toString().includes(searchQuery));
+    const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim search query
+    const matchesSearch = item.ProductName.toLowerCase().includes(normalizedSearch) ||
+                          item.ProductCategory.toLowerCase().includes(normalizedSearch) ||
+                          item.action.toLowerCase().includes(normalizedSearch) ||
+                          (item.user_id && item.user_id.toString().includes(normalizedSearch));
     const matchesAction = filterAction === "all" || item.action === filterAction;
    
     let matchesDateRange = true;
@@ -178,7 +179,7 @@ const filteredSortedLogs = logs
                             className="prod-audit-search-box"
                             placeholder="Search logs..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
                         <div className="filter-prod-audit-container">
                             <label htmlFor="filter-prod-audit">Filter by Action: </label>
@@ -213,6 +214,7 @@ const filteredSortedLogs = logs
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

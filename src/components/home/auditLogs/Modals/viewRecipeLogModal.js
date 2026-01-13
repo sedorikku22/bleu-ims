@@ -12,13 +12,13 @@ const ViewRecipeLogModal = ({ log, onClose }) => {
             try {
                 // Extract IDs from log data
                 const ingredientIDs = (log.Ingredients || []).map(item => item.IngredientID);
-                const supplyIDs = (log.SuppliesMaterials || []).map(item => item.SupplyID);
+                const supplyIDs = (log.Materials || []).map(item => item.MaterialID);
                 const addOnIDs = (log.AddOns || []).map(item => item.AddOnID);
 
                 // Fetch data for Ingredients, Supplies, Add-Ons
                 const [ingredientResponse, supplyResponse, addOnResponse] = await Promise.all([
                     fetch(`/api/ingredients?ids=${ingredientIDs.join(',')}`),
-                    fetch(`/api/supplies?ids=${supplyIDs.join(',')}`),
+                    fetch(`/api/materials?ids=${supplyIDs.join(',')}`),
                     fetch(`/api/addons?ids=${addOnIDs.join(',')}`),
                 ]);
 
@@ -40,19 +40,28 @@ const ViewRecipeLogModal = ({ log, onClose }) => {
     }, [log]);
 
     const formatData = (items, reference) => {
-    if (!items || items.length === 0) return 'N/A';
-    return items.map(item => {
-        const refKey = item.IngredientID || item.MaterialID || item.AddOnID;
-        const refItem = reference[refKey]; // Lookup the reference data by ID
-        if (!refItem) {
-            console.warn(`Missing reference for ID: ${refKey}`);
-            return `(ID: ${refKey}) ${item.Amount || ''} ${item.Measurement || ''}`.trim();
-        }
-        const refName = refItem.name || '';
-        const amount = item.Amount ? `${item.Amount}${item.Measurement || ''}` : '';
-        return `${refName} ${amount}`.trim();
-    }).join(', ');
-};
+        if (!items || items.length === 0) return 'N/A';
+
+        return items.map(item => {
+            const refKey =
+                item.IngredientID ??
+                item.MaterialID ??
+                item.AddOnID;
+
+            const refItem = reference?.[String(refKey)];
+
+            const amount = item.Amount
+                ? `${item.Amount}${item.Measurement || ''}`
+                : '';
+
+            if (!refItem) {
+                console.warn('Missing reference for:', refKey, reference);
+                return `(ID: ${refKey}) ${amount}`.trim();
+            }
+
+            return `${refItem.name}${amount ? ' ' + amount : ''}`;
+        }).join(', ');
+    };
 
     const formatTimestamp = (timestamp) => {
         const formattedDate = new Date(timestamp).toLocaleString("en-CA", {
@@ -152,10 +161,9 @@ const ViewRecipeLogModal = ({ log, onClose }) => {
         const recipeBody = [
             ['Recipe ID', log.RecipeID],
             ['Recipe Name', log.RecipeName],
-            ['Category', log.Category],
             ['Product ID', log.ProductID],
             ['Ingredients', log.Ingredients || 'N/A'],
-            ['Supplies & Materials', log.SuppliesMaterials || 'N/A'],
+            ['Supplies & Materials', log.Materials || 'N/A'],
             ['Add Ons', log.AddOns || 'N/A']
         ];
 
@@ -339,10 +347,6 @@ const ViewRecipeLogModal = ({ log, onClose }) => {
                                 <span className="recipe-modal-value">{log.RecipeName}</span>
                             </div>
                             <div className="recipe-modal-detail-item">
-                                <span className="recipe-modal-label">Category:</span>
-                                <span className="recipe-modal-value">{log.Category}</span>
-                            </div>
-                            <div className="recipe-modal-detail-item">
                                 <span className="recipe-modal-label">Product ID:</span>
                                 <span className="recipe-modal-value">{log.ProductID}</span>
                             </div>
@@ -352,7 +356,7 @@ const ViewRecipeLogModal = ({ log, onClose }) => {
                             </div>
                             <div className="recipe-modal-detail-item full-width">
                                 <span className="recipe-modal-label">Supplies & Materials:</span>
-                                <span className="recipe-modal-value">{formatData(log.SuppliesMaterials, supplyDetails)}</span>
+                                <span className="recipe-modal-value">{formatData(log.Materials, supplyDetails)}</span>
                             </div>
                             <div className="recipe-modal-detail-item full-width">
                                 <span className="recipe-modal-label">Add Ons:</span>

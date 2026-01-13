@@ -40,7 +40,9 @@ function Ingredients() {
     // filtering and sorting data
     const filteredIngredients = ingredients
     .filter(ingredient => {
-        const matchesSearch = ingredient.IngredientName.toLowerCase().includes(searchQuery.toLowerCase());
+        const normalizedSearch = searchQuery.toLowerCase().trim(); // Normalize and trim search query
+        const normalizedIngredientName = ingredient.IngredientName.toLowerCase().trim(); // Normalize and trim ingredient name
+        const matchesSearch = normalizedIngredientName.includes(normalizedSearch);
 
         // status filtering
         let matchesStatus = true;
@@ -283,7 +285,7 @@ function Ingredients() {
                             className="ingredient-search-box"
                             placeholder="Search ingredients..."
                             value={searchQuery}
-                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onChange={(e) => setSearchQuery(e.target.value.trimStart())}
                         />
 
 
@@ -305,6 +307,7 @@ function Ingredients() {
                                 id="date-to"
                                 className="date-filter-input"
                                 value={dateTo}
+                                min={dateFrom}
                                 onChange={(e) => setDateTo(e.target.value)}
                             />
                         </div>

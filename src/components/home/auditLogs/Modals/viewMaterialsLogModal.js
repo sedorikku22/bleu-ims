@@ -101,7 +101,6 @@ const ViewMaterialsLogModal = ({ log, onClose }) => {
             ['Material ID', log.MaterialID],
             ['Material Name', log.MaterialName],
             ['Quantity', log.MaterialQuantity !== null ? log.MaterialQuantity : 'N/A'],
-            ['Date Added', log.MaterialDateAdded || 'N/A'],
             ['Status', log.Status || 'N/A']
         ];
 
@@ -338,10 +337,6 @@ const ViewMaterialsLogModal = ({ log, onClose }) => {
                                 <span className="materials-log-modal-value">
                                     {log.MaterialQuantity !== null ? log.MaterialQuantity : 'N/A'}
                                 </span>
-                            </div>
-                            <div className="materials-log-modal-detail-item">
-                                <span className="materials-log-modal-label">Date Added:</span>
-                                <span className="materials-log-modal-value">{log.MaterialDateAdded || 'N/A'}</span>
                             </div>
                             <div className="materials-log-modal-detail-item">
                                 <span className="materials-log-modal-label">Status:</span>
