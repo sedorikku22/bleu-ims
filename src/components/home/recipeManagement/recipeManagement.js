@@ -20,7 +20,7 @@ const RECIPE_API_URL = "https://ims-recipeservices.onrender.com/recipes/";
 const PRODUCTS_API_URL = "https://ims-productservices.onrender.com/is_products/products/";
 const INGREDIENTS_API_URL = "https://bleu-stockservices.onrender.com/ingredients/";
 const SUPPLIES_API_URL = "https://bleu-stockservices.onrender.com/materials/";
-const PRODUCT_TYPES_API_URL = "https://ims-productservices.onrender.com1/ProductType/";
+const PRODUCT_TYPES_API_URL = "https://ims-productservices.onrender.com/ProductType/";
 
 const getAuthToken = () => localStorage.getItem("authToken");
 
